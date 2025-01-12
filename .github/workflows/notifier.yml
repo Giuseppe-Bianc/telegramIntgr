@@ -1,11 +1,14 @@
 name: Telegram Message on Push
 on: [push]
 jobs:
-
   build:
     name: Build
     runs-on: ubuntu-latest
     steps:
+      - name: Extract branch name
+        id: extract_branch
+        run: echo "BRANCH_NAME=${GITHUB_REF##*/}" >> $GITHUB_ENV
+
       - name: Send Telegram message on push
         uses: appleboy/telegram-action@master
         with:
@@ -19,4 +22,4 @@ jobs:
             Repository: ${{ github.repository }}
             View Changes: https://github.com/${{ github.repository }}/commit/${{ github.sha }}
             Commit Timestamp: ${{ github.event.head_commit.timestamp }}
-            Branch: ${{GITHUB_REF##*/}}
+            Branch: ${{ env.BRANCH_NAME }}
