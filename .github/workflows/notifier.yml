@@ -19,4 +19,4 @@ jobs:
             Repository: ${{ github.repository }}
             View Changes: https://github.com/${{ github.repository }}/commit/${{ github.sha }}
             Commit Timestamp: ${{ github.event.head_commit.timestamp }}
-            Branch: ${GITHUB_REF##*/}
+            Branch: ${{GITHUB_REF##*/}}
