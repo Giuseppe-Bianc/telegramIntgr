@@ -12,11 +12,13 @@ jobs:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
-            📢 **New Commit Push Alert** 📢
+            **New Commit Push Alert**
             
             **Commit by**: ${{ github.actor }}
             **Commit Message**: ${{ github.event.commits[0].message }}
             
             **Repository**: ${{ github.repository }}
-            
-            **View Changes**: [Click here to view commit](https://github.com/${{ github.repository }}/commit/${{ github.sha }})
+            **View Changes**: [View Commit](https://github.com/${{ github.repository }}/commit/${{ github.sha }})
+
+            **Commit Timestamp**: ${{ github.event.head_commit.timestamp }}
+            **Branch**: ${{ github.ref }}
