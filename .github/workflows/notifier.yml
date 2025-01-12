@@ -16,10 +16,24 @@ jobs:
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
             New Commit Push Alert
-            Commit by: ${{ github.actor }}
-            Commit Message: ${{ github.event.commits[0].message }}
             
-            Repository: ${{ github.repository }}
-            View Changes: https://github.com/${{ github.repository }}/commit/${{ github.sha }}
-            Commit Timestamp: ${{ github.event.head_commit.timestamp }}
-            Branch: ${{ env.BRANCH_NAME }}
+            Commit Details:
+            - Commit ID: `${{ github.sha }}`
+            - Committer: `${{ github.actor }}`
+            - Commit Message: `${{ github.event.commits[0].message }}`
+            
+            Repository Information:
+            - Repository Name: `${{ github.repository }}`
+            - Branch: `${{ env.BRANCH_NAME }}`
+            
+            Links:
+            - View Commit on GitHub: https://github.com/${{ github.repository }}/commit/${{ github.sha }}
+            - View Repository: https://github.com/${{ github.repository }}
+            
+            Additional Info:
+            - Commit Timestamp: `${{ github.event.head_commit.timestamp }}`
+            - Pushed by: `${{ github.actor }}`
+            - Push Event Type: `${{ github.event_name }}`
+            
+            Date of Push: `${{ github.event.head_commit.timestamp }}`
+            Branch: `${{ env.BRANCH_NAME }}`
